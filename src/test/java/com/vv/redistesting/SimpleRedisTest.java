@@ -12,6 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
@@ -29,5 +30,8 @@ public class SimpleRedisTest {
         String saved = theService.save( id.toString() );
         log.error( saved );
         assertNotNull( saved );
+        String checked = theService.get( id.toString() + "-key" );
+        log.error( checked );
+        assertEquals( id.toString() + "-value", checked );
     }
 }
